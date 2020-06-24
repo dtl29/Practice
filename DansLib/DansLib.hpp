@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 int factorial(int num);
 
@@ -8,12 +9,26 @@ class fraction
 {
 private:
 	int numerator;
-	int denomitaor;
+	int denominator;
+	int gcd(int a, int b);
+	fraction simplifyFraction(fraction OgFraction);
 public:
 	fraction();
 	fraction(int num, int den);
-	bool operator= (fraction other); 
+	bool operator==(fraction other);
+	bool operator!=(fraction other);
+	bool operator<(fraction other); 
+	bool operator>(fraction other);
+	fraction operator+(fraction other);
+	fraction operator-(fraction other);
+	fraction operator*(fraction other);
+	fraction operator/(fraction other);
+	float toFloat();
+	friend std::ostream& operator<<(std::ostream& os, const fraction& frac);
 	void printFraction();
+	/* to be done
+
+	*/
 };
 
 //single linked list with head as root (should have made a doublly liked list)
