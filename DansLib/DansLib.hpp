@@ -2,6 +2,20 @@
 
 int factorial(int num);
 
+
+//fraction class
+class fraction
+{
+private:
+	int numerator;
+	int denomitaor;
+public:
+	fraction();
+	fraction(int num, int den);
+	bool operator= (fraction other); 
+	void printFraction();
+};
+
 //single linked list with head as root (should have made a doublly liked list)
 //template<class T>
 class DansIntList
@@ -33,25 +47,29 @@ public:
 	//void sortAccending();
 	//void reverse();
 
-
 };
 
 //recreation of the vector class form the standard library into my own functionality 
-class DansVector 
+class DansIntVector 
 {
-	int *head; 
+	int *arr; 
 	int size; 
+	int *interator;
+	int curentIndex;
+
 public:
+
 	//defualt contructor 
-	DansVector();
+	DansIntVector();
 	//contructor with size of vector 
-	DansVector(int n);
+	DansIntVector(int n);
 
 	//need to think about iterators 
 	//member functions
 
 	//will insert new element to the end of the vector
-	void PushBack();
+	void pushBack(int num);
+	void printVector();
 	/*
 begin() – Returns an iterator pointing to the first element in the vector
 end() – Returns an iterator pointing to the theoretical element that follows the last element in the vector

@@ -3,7 +3,9 @@
 #include <iostream>
 
 /*
-
+*****************************************************************
+****************  Random usful functions  ***********************
+*****************************************************************
 */
 int factorial(int num)
 {
@@ -12,6 +14,39 @@ int factorial(int num)
 		return num * factorial(num-1);
 	}
 	return 1;
+}
+
+/*
+*****************************************************************
+*********  fraction member fucntions  *************************
+*****************************************************************
+*/
+fraction::fraction()
+{
+	fraction::numerator = 1;
+	fraction::denomitaor = 1;
+}
+fraction::fraction(int num, int den)
+{
+	fraction::numerator = num;
+	fraction::denomitaor = den;
+}
+
+bool fraction::operator= (fraction other)
+{
+	//make a greatest common diviosor so 2/3 would equal 6/9 
+	if(fraction::numerator == other.numerator && fraction::denomitaor == other.denomitaor)
+	{
+		return true;
+	}	
+	else
+	{
+		return false;
+	}
+}
+void fraction::printFraction()
+{
+	std::cout << fraction::numerator << '/' << fraction::denomitaor;	
 }
 
 /*
@@ -169,17 +204,44 @@ int DansIntList::maxSizeOfList()
 *********  DansVector member fucntions  *************************
 *****************************************************************
 */
-DansVector::DansVector()
+DansIntVector::DansIntVector()
 {
-	DansVector::size = 1;
+	DansIntVector::size = 1;
+	DansIntVector::arr = new int[1];
+	DansIntVector::curentIndex = 0;
+}
+DansIntVector::DansIntVector(int n)
+{
+	DansIntVector::size = n;
+	DansIntVector::arr = new int[n];
+	DansIntVector::curentIndex = 0;
+}
+
+void DansIntVector::pushBack(int num)
+{
+	if(DansIntVector::curentIndex == size)
+	{
+		//container need to be resized
+		return;
+		/*new container should be double the size of the last one, 
+		so the new size should be the size plus size times two (3 sizes large now)*/ 
+		size = size + size + size; 
+	}
+	else if(DansIntVector::curentIndex < size)
+	{
+		DansIntVector::arr[DansIntVector::curentIndex++] = num;
+	}
+	else
+	{
+		//throw exception (this should not happen)
+	}
 
 }
-DansVector::DansVector(int n)
+void DansIntVector::printVector()
 {
-	DansVector::size = n;
-}
-
-void DansVector::PushBack()
-{
-
+	for(int i = 0; i < DansIntVector::curentIndex; i++)
+	{
+		std::cout << DansIntVector::arr[i] << ',';
+	} 
+	std::cout << std::endl;
 }

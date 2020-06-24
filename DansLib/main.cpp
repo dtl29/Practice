@@ -17,4 +17,11 @@ int main()
 	DansList<char> charLis;
 	charLis.pushBack('c');
 	charLis.printList();
+	charLis.pushBack('\n');
+	charLis.printList();
+	DansIntVector vec;
+	vec.pushBack(9);
+	vec.printVector();
+	fraction f;
+	f.printFraction();
 }
