@@ -6,4 +6,5 @@ This project is to recreate the  functionality of the C++ standard library. Thus
             vector class (not Done)
  To Use add an include for the main hpp file : 
       #include "DansLib.hpp"
+ *main.cpp is for testing and is not part of the lib
 -by Daniel Louis
