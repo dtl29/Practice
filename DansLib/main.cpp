@@ -21,11 +21,13 @@ int main()
 	charLis.pushBack('\n');
 	charLis.printList();
 	std::cout << "********************End test for List.****************************\n";
+
 	std::cout << "vector test.\n";
-	DansIntVector vec;
+	DansVector<int> vec;
 	vec.pushBack(9);
 	vec.printVector();
 	std::cout << "********************End test for vector.****************************\n";
+
 	std::cout << "Fraction test.\n";
 	fraction f;
 	std::cout << "Batic fraction call create a fraction of ones : "; f.printFraction();	std::cout << std::endl;
@@ -36,4 +38,8 @@ int main()
 	std::cout << one << " < " << two << " is " << ((one<two)?"true":"false") << std::endl;
 	std::cout << one << " / " << two << " = " << (one/two) << std::endl;
 	std::cout << one.toFloat() << '\n';
+	std::cout << "********************End test for Fraction.****************************\n";
+
+	float random = 4.3;
+	std::cout << "4.3^3= " << DansPow(4.3,3) << '\n';
 }

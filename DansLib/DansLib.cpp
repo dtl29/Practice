@@ -1,4 +1,4 @@
-
+#pragma once
 #include "DansLib.hpp"
 #include <iostream>
 
@@ -7,6 +7,7 @@
 ****************  Random usful functions  ***********************
 *****************************************************************
 */
+//will return num!
 int factorial(int num)
 {
 	if(num > 1)
@@ -16,194 +17,65 @@ int factorial(int num)
 	return 1;
 }
 
-
-//**************************************************
-// Destructor                                      *
-// This function deletes every node in the list.   *
-// pre: n/a                                        *
-// post: destroyed object                          *
-//**************************************************
-DansIntList::~DansIntList()
+/*******************************
+**  Pow overloaded functions  ** 
+********************************/
+//will return a^x 
+int DansPow(int a, int x)
 {
-	node *curentnode = head;
-	node *nextnode;
-	for(int i = 0; i > size; i++)
+	bool negative = false;
+	//need to deal with negative expoinents (sposed to be over 1/answer)
+	if(x < 0)
 	{
-		nextnode = curentnode->nextnode;
-		delete curentnode;
-		curentnode = nextnode;
+		negative = true;
+		x *= -1;
 	}
-}
-
-DansIntList::DansIntList()
-{
-	size = 0;
-	maxSize = 500;
-}
-
-bool DansIntList::empty()
-{
-	if(size == 0)
+	int temp = 1;
+	for(int i = 0; i < x; i++)
 	{
-		return true;
+		temp *= a;
 	}
-	return false;
-}
-int DansIntList::front()
-{
-	return head->value;
-}
-
-int DansIntList::back()
-{
-	return last->value;
-}
-
-void DansIntList::pushBack(int value)
-{
-	if(size == 0)
+	if(negative)
 	{
-		head->value = value;
-		last = head;
-		size = 1;
-		return;
+		return static_cast<int>(1.0 / static_cast<float>(temp));
 	}
-	else
-	{
-		node *newNode = new node;
-		newNode->value = value;
-		last->nextnode = newNode;
-		last = newNode;
-		size += 1;
-	}
+	return temp;
 }
-
-int DansIntList::sizeofList()
+float DansPow(float a, int x)
 {
-	return size;
+	bool negative = false;
+	if(x<0)
+	{
+		negative = true;
+		x *= -1;
+	}
+	float temp = 1;
+	for(int i = 0; i < x; i++)
+	{
+		temp *= a;
+	}
+	if(negative)
+	{
+		return 1.0 / temp;
+	}
+	return temp;
 }
-
-void DansIntList::printList()
+double DansPow(double a, int x)
 {
-	std::cout << "in the list: \n";
-	node *thisNode = head;
-	for(int i = 0; i < size; i++)
+	bool negative = false;
+	if(x < 0)
 	{
-		std::cout << thisNode->value << ", ";
-		thisNode = thisNode->nextnode;
+		negative = true;
+		x *= -1;
 	}
-	std::cout << std::endl;
-}
-
-int DansIntList::popBack()
-{
-	int tempValue;
-	node *nexttoLast = head;
-	if(empty())
+	double temp = 1;
+	for(int i = 0; i < x; i++)
 	{
-		return -1;//should throw an error 
+		temp *= a;
 	}
-	else
+	if(negative)
 	{
-		for(int i = 0; i < size - 1; i++)
-		{
-			nexttoLast = nexttoLast->nextnode;
-		}
-		size--;
-		tempValue = last->value;
-		delete last; 
-		last = nexttoLast;
-		return tempValue;
+		return 1.0 / temp;
 	}
-}
-
-void DansIntList::pushFront(int value)
-{
-	if(size == 0)
-	{
-		head->value = value;
-		size = size + 1;
-		last = head;
-		return;
-	}
-	else
-	{
-		node *newnode = new node;
-		newnode->value = value;
-		newnode->nextnode = head;
-		head = newnode;
-		size++;
-		return;
-	}
-}
-
-int DansIntList::popFront()
-{
-	int tempvalue;
-	node *tempnode; 
-	if(size == 0)
-	{
-		return -1;//should throw an error
-	}
-	else
-	{
-		tempvalue = head->value;
-		tempnode = head->nextnode;
-		delete head;
-		head = tempnode;
-		size -= 1;
-		return tempvalue;
-	}
-}
-int DansIntList::maxSizeOfList()
-{
-	return maxSize;
-}
-
-
-/*
-*****************************************************************
-*********  DansVector member fucntions  *************************
-*****************************************************************
-*/
-DansIntVector::DansIntVector()
-{
-	DansIntVector::size = 1;
-	DansIntVector::arr = new int[1];
-	DansIntVector::curentIndex = 0;
-}
-DansIntVector::DansIntVector(int n)
-{
-	DansIntVector::size = n;
-	DansIntVector::arr = new int[n];
-	DansIntVector::curentIndex = 0;
-}
-
-void DansIntVector::pushBack(int num)
-{
-	if(DansIntVector::curentIndex == size)
-	{
-		//container need to be resized
-		return;
-		/*new container should be double the size of the last one, 
-		so the new size should be the size plus size times two (3 sizes large now)*/ 
-		size = size + size + size; 
-	}
-	else if(DansIntVector::curentIndex < size)
-	{
-		DansIntVector::arr[DansIntVector::curentIndex++] = num;
-	}
-	else
-	{
-		//throw exception (this should not happen)
-	}
-
-}
-void DansIntVector::printVector()
-{
-	for(int i = 0; i < DansIntVector::curentIndex; i++)
-	{
-		std::cout << DansIntVector::arr[i] << ',';
-	} 
-	std::cout << std::endl;
+	return temp;
 }
