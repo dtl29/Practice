@@ -79,3 +79,37 @@ double DansPow(double a, int x)
 	}
 	return temp;
 }
+
+int DansABV(int a)
+{
+	if(a < 0)
+	{
+		return a * -1;
+	}
+	else 
+	{
+		return a;
+	}
+}
+float DansABV(float a)
+{
+	if(a < 0)
+	{
+		return a * -1;
+	}
+	else 
+	{
+		return a;
+	}
+}
+double DansABV(double a)
+{
+	if(a < 0)
+	{
+		return a * -1;
+	}
+	else 
+	{
+		return a;
+	}
+}

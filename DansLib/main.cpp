@@ -26,6 +26,7 @@ int main()
 	DansVector<int> vec;
 	vec.pushBack(9);
 	vec.printVector();
+	DansVector<char> vec2; 
 	std::cout << "********************End test for vector.****************************\n";
 
 	std::cout << "Fraction test.\n";
